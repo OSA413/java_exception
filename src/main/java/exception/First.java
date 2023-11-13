@@ -3,11 +3,16 @@ package exception;
 public class First {
 
     public static void main(String[] args) {
-        divideByZero();
-        accessToUnexistingElement();
+        try { divideByZero(); }
+        catch (ArithmeticException e) {}
+        try { accessToUnexistingElement(); }
+        catch (NegativeArraySizeException e) {}
+        // Это не падает, возможно, это должно было упасть, но не падает
         playWithNullPointer();
-        tryToCreateFunnyArray();
-        searchSomethingOutString();
+        try { tryToCreateFunnyArray(); }
+        catch (NegativeArraySizeException e) {}
+        try {searchSomethingOutString();}
+        catch (StringIndexOutOfBoundsException e) {}
         System.out.println("Ура! Меня снова печают");
     }
 
